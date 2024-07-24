@@ -1,5 +1,5 @@
 # ABC085C - Otoshidama
-def goukei(x, y, z):
+def goukei(x:int, y:int, z:int) -> int:
     return (10000 * x) + (5000 * y) + (1000 * z)
 
 def otoshidama(n, kei):
@@ -18,7 +18,7 @@ def otoshidama(n, kei):
                     break
                 # print(f"10000x{x} + 5000x{y} + 1000x{z} = {goukei(x,y,z)}")
                 gkei = goukei(x,y,z)
-                print(f"{x=},{y=},{z=}, {gkei=}")
+                print(f"{n=},{kei=}: {x=},{y=},{z=}: {gkei=}")
                 if gkei > kei:
                     # print("over")
                     break
@@ -27,6 +27,7 @@ def otoshidama(n, kei):
                     return (x,y,z)
                     break
                     print("return")
+                print("next:{x=},{y=},{z=}")
 
     print(f"No Result: {n=},{kei=}, {x=}, {y=}, {z=}, {gkei=}")
     return (x,y,z)

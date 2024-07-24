@@ -23,6 +23,6 @@ def test_case():
     otd = ot.otoshidama(n=cases[0]["n"], kei=cases[0]["kei"])
     (x,y,z) = otd
     otkei = (x*10000 + y*5000 + z*1000)
-    print(f"cs[0]:{cases[0]=}")
+    print(f"cs[0]:{cases[0]=}, {otkei=}")
     assert cases[0]["kei"] == otkei
 
