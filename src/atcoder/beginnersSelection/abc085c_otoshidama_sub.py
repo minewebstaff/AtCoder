@@ -9,7 +9,7 @@ def otoshidama(n, kei):
     for x in range(n, -1, -1):
         if goukei(x,y,z) > kei:
             continue
-        for y  in range(n - x, -1, -1):
+        for y in range(n - x, -1, -1):
             if goukei(x,y,z) > kei:
                 continue
             for z in range(n - x - y, -1, -1):
@@ -27,7 +27,7 @@ def otoshidama(n, kei):
                     return (x,y,z)
                     break
                     print("return")
-                print("next:{x=},{y=},{z=}")
+                print(f"next:{x=},{y=},{z=}")
 
     print(f"No Result: {n=},{kei=}, {x=}, {y=}, {z=}, {gkei=}")
     return (x,y,z)
