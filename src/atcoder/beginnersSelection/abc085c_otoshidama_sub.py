@@ -1,36 +1,37 @@
-# ABC085C - Otoshidama
+# ABC085C - Otoshidama-sub
+from atcoder.beginnersSelection.abc085c_otoshidama_make_testcase import make_testcase
+
+
 def goukei(x:int, y:int, z:int) -> int:
     return (10000 * x) + (5000 * y) + (1000 * z)
 
 def otoshidama(n, kei):
     print(f"otoshidama({n=}, {kei=})")
-    (x, y , z) = (n, 0, 0)
 
-    for x in range(n, -1, -1):
-        if goukei(x,y,z) > kei:
-            continue
-        for y in range(n - x, -1, -1):
-            if goukei(x,y,z) > kei:
-                continue
-            for z in range(n - x - y, -1, -1):
-                # print(f"{x=},{y=},{z=}")
+    startx = kei // 10000
+    for x in range(startx, -1, -1):
+        starty = (kei - 10000 * x) // 5000
+        for y in range(starty, -1, -1):
+            startz = (kei - (10000 * x) - (5000 * y)) // 1000
+            for z in range(startz, -1, -1):
                 if x + y + z != n:
                     break
-                # print(f"10000x{x} + 5000x{y} + 1000x{z} = {goukei(x,y,z)}")
-                gkei = goukei(x,y,z)
-                print(f"{n=},{kei=}: {x=},{y=},{z=}: {gkei=}")
-                if gkei > kei:
-                    # print("over")
+                if goukei(x,y,z) > kei:
                     break
-                if gkei == kei:
-                    print(f"Result=({x=}, {y=}, {z=})")
+                if goukei(x,y,z) == kei:
+                    print(f"Result=({x=}, {y=}, {z=}, {goukei(x,y,z)=})\n")
                     return (x,y,z)
-                    break
-                    print("return")
-                print(f"next:{x=},{y=},{z=}")
-
-    print(f"No Result: {n=},{kei=}, {x=}, {y=}, {z=}, {gkei=}")
-    return (x,y,z)
+    (x, y, z) = (-1,-1,-1)
+    print(f"No Result: {n=},{kei=}, {x=}, {y=}, {z=}, {goukei(x,y,z)=}")
+    return (-1,-1,-1)
 
 
-
+if __name__=="__main__":
+    test_cases = []
+    for i in range(10):
+        test_cases.append(make_testcase())
+    for test in test_cases:
+        print(f"test--{test}")
+        otoshidama(n = test["n"], kei= test["kei"])
+    # bud case
+    otoshidama(n=20, kei=196000)
