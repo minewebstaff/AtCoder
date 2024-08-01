@@ -3,10 +3,19 @@ n, q = (int(x) for x in input().split())
 class Node:
     def __init__(self, label):
         self.label = label
-        self.small: Node = None
-        self.big: Node = None
+        self.small: Node
+        self.big: Node
 
-    def add(self, new_node:Node, hikaku: str) -> str:
-        if hikaku == "<":
+    def add_pre(self, anode):
+        q = f"? {self.label} {anode.label}"
+        return q
+
+    def add(self, anode, comparator):
+        if comparator == "<":
             if self.small is None:
-                self.small = new_node
+                self.small = anode
+            else:
+                
+
+
+
